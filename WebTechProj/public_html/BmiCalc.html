@@ -1,0 +1,106 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>HPlus Sport</title>
+  <link rel="stylesheet" href="css/css.css">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script src="https://code.jquery.com/jquery-3.6.1.min.js" integrity="sha256-o88AwQnZB+VDvE9tvIXrMQaPlFFSUTR+nldQm1LuPXQ=" crossorigin="anonymous"></script>
+  <script>
+      $(function () {
+        n =  new Date();
+y = n.getFullYear();
+m = n.getMonth() + 1;
+d = n.getDate();
+document.getElementById("date").innerHTML = m + "/" + d + "/" + y;
+    })
+      
+    window.onload = () => {
+    let button = document.querySelector("#btn");
+  
+    // Function for calculating BMI
+    button.addEventListener("click", calculateBMI);
+};
+  
+function calculateBMI() {
+  
+    /* Getting input from user into height variable.
+    Input is string so typecasting is necessary. */
+    let height = parseInt(document
+            .querySelector("#height").value);
+  
+    /* Getting input from user into weight variable. 
+    Input is string so typecasting is necessary.*/
+    let weight = parseInt(document
+            .querySelector("#weight").value);
+  
+    let result = document.querySelector("#result");
+  
+    // Checking the user providing a proper
+    // value or not
+    if (height === "" || isNaN(height)) 
+        result.innerHTML = "Provide a valid Height!";
+  
+    else if (weight === "" || isNaN(weight)) 
+        result.innerHTML = "Provide a valid Weight!";
+  
+    // If both input is valid, calculate the bmi
+    else {
+  
+        // Fixing upto 2 decimal places
+        let bmi = (weight / ((height * height) 
+                            / 10000)).toFixed(2);
+  
+        // Dividing as per the bmi conditions
+        if (bmi < 18.6) result.innerHTML =
+            `Under Weight : <span>${bmi}</span>`;
+  
+        else if (bmi >= 18.6 && bmi < 24.9) 
+            result.innerHTML = 
+                `Normal : <span>${bmi}</span>`;
+  
+        else result.innerHTML =
+            `Over Weight : <span>${bmi}</span>`;
+    }
+}
+</script>
+<link href="css.css" rel="stylesheet" type="text/css"/>
+</head>
+<body>
+
+<header id="home" class="header">
+  <nav class="nav" role="navigation">
+    <div class="container nav-elements">
+      <div class="branding">
+        <a href="index.html"><img src="images/hpluslogo.svg" alt="Logo - H Plus Sports"></a>
+      </div><!-- branding -->
+      <ul class="navbar">
+        <li><a href="index.html">home</a></li>
+        <li><a href="ImageGallery.html">Images</a></li>
+        <li><a href="Login.html">Login</a></li>
+          <li><a href="BmiCalc.html">Bmi</a></li>
+      </ul><!-- navbar -->
+    </div><!-- container nav-elements -->
+  </nav>
+    </header>
+    <div class="container">
+ <h1 >Bmi calculator</h1>
+        
+        <p class="bmi">Height (in cm)  
+        <label for="height"></label>
+            <input name="height" type="text" id="height"></p>
+        
+        <p class="bmi">Weight (in kg)
+        <label for="Weight"></label>
+            <input name="Weight" type="text" id="weight"></p>
+        <p><button id="btn">Calculate</button></p>
+  
+        <div id="result"></div>
+        <img src="images/backgrounds/Bmi.png" id="bmi">
+    </div>
+<footer class="footer">
+  <p class="legal">H+ Sport is a fictitious brand created by lynda.com solely for the purpose of training. All products and people associated with H+ Sport are also fictitious. Any resemblance to real brands, products, or people is purely coincidental. Information provided about the product is also fictitious and should not be construed to be representative of actual products on the market in a similar product category.</p>
+</footer><!-- footer -->
+    
+</body>
+</html>
