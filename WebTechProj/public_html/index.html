@@ -1,0 +1,164 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>HPlus Sport</title>
+  <link rel="stylesheet" href="css/css.css">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script src="https://code.jquery.com/jquery-3.6.1.min.js" integrity="sha256-o88AwQnZB+VDvE9tvIXrMQaPlFFSUTR+nldQm1LuPXQ=" crossorigin="anonymous"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-T8Gy5hrqNKT+hzMclPo118YTQO6cYprQmhrYwIiQ/3axmI1hQomh7Ud2hPOy8SP1" crossorigin="anonymous">
+  <script>
+      
+$(function () {
+        $("#products h2.product-name[data-type='mineralwater']").css("background-color", "#2982D0");
+        $("#products h2.product-name[data-type='vitamin']").css("background-color", "#12500F");
+        $("#products h2.product-name[data-type='proteinbar']").css("background-color", "#4E0F50");
+        document.querySelector('#cbVitamins').addEventListener('change',function (evt) {
+        updateProductView("vitamins", event.target.checked);
+        });
+        document.querySelector('#cbMineralWater').addEventListener('change',function (evt) {
+        updateProductView("mineralwater", evt.target.checked);
+        });
+        document.querySelector('#cbProtein').addEventListener('change',function (evt) {
+        updateProductView("proteinbar", evt.target.checked); });
+        
+        n =  new Date();
+        y = n.getFullYear();
+        m = n.getMonth() + 1;
+        d = n.getDate();
+        document.getElementById("date").innerHTML = m + "/" + d + "/" + y;
+    })
+    
+    function updateProductView(categoryName, bVisible) {
+            var dataSelectorVal = ""; // string variable that will contain a selector
+            switch (categoryName) {
+            case "vitamins":
+            dataSelectorVal = "h2[data-type='vitamin']";
+            break;
+            case "mineralwater":
+            dataSelectorVal = "h2[data-type='mineralwater']";
+            break;
+            case "proteinbar":
+            dataSelectorVal = "h2[data-type='proteinbar']"; break; }
+            $(".product-item").has(dataSelectorVal).css('display', bVisible ? "": "none");}
+      
+$(document).ready(function(){
+  var submitIcon = $('.searchbox-icon');
+  var inputBox = $('.searchbox-input');
+  var searchBox = $('.searchbox');
+  var isOpen = false;
+  submitIcon.click(function(){
+    if(isOpen == false){
+      searchBox.addClass('searchbox-open');
+      inputBox.focus();
+      isOpen = true;
+    } else {
+      searchBox.removeClass('searchbox-open');
+      inputBox.focusout();
+      isOpen = false;
+    }
+  });  
+
+});
+</script>
+<link href="css.css" rel="stylesheet" type="text/css"/>
+</head>
+<body>
+
+<header id="home" class="header">
+  <nav class="nav" role="navigation">
+    <div class="container nav-elements">
+      <div class="branding">
+        <a href="index.html"><img src="images/hpluslogo.svg" alt="Logo - H Plus Sports"></a>
+      </div><!-- branding -->
+      <ul class="navbar">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="ImageGallery.html">Images</a></li>
+        <li><a href="Login.html">Login</a></li>
+        
+        <li><a href="BmiCalc.html">Bmi</a></li>
+      </ul><!-- navbar -->
+    </div><!-- container nav-elements -->
+  </nav>
+  <div class="container tagline">
+    <h1 class="headline">Our Mission</h1>
+    <p>We support and encourage <em>active and healthy</em> lifestyles, by offering <em>ethically sourced</em> and <em>eco-friendly</em> nutritional products for the <em>performance-driven</em> athlete.</p>
+  </div>
+</header>
+    
+<div class="container3">
+  <form class="searchbox">
+    <input type="search" placeholder="Search..." name="search" class="searchbox-input" onkeyup="buttonUp();" required>
+    <input type="submit" class="searchbox-submit">
+    <span class="searchbox-icon"><i class="fa fa-search" aria-hidden="true"></i></span>
+  </form>
+</div>
+    
+<section id="products" class="section">
+  <header class="imageheader"></header>
+  <div class="container">
+    <h2 class="headline">Products</h2>
+    <p>H+ Sport is <em>dedicated to creating</em> eco-friendly, high-quality, nutrient-rich, nutritional products that <em>enhance active lifestyles</em>. We <a href="ImageGallery.html">guarantee</a> it. Take a look at some of our products.</p>
+  </div><!-- container -->
+  <div id="productControls">
+      <form>
+          <div>
+              <p><span><strong>Remove items:</strong></span>
+                  <p><strong>Vitamins</strong>
+              <input id="cbVitamins" type="checkbox" checked="checked"/>
+              <strong>Mineral Water</strong>
+              <input id="cbMineralWater" type="checkbox" checked="checked"/>
+              <strong>Protein bars</strong>
+            <input id="cbProtein" type="checkbox" checked="checked"/></p>
+          </div>
+              </form>
+   </div><br>
+  <ul class="product-list">
+    <li class="product-item" data-prod_id="V-A1037">
+        <img class="product-image" src="images/products/vitamin-a.jpg" alt="Vitamin A - Product Photo">
+        <h2 class="product-name" data-type="vitamin">Vitamin A</h2>
+    </li>
+    <li class="product-item" data-prod_id="V-BC2178">
+        <img class="product-image" src="images/products/vitamin-bcomplex.jpg" alt="B Complex - Product Photo">
+        <h2 class="product-name" data-type="vitamin">Vitamin-B Complex</h2>
+    </li>
+    <li class="product-item" data-prod_id="MW-8812">
+        <img class="product-image" src="images/products/mineralwater-blueberry.jpg" alt="Blueberry Mineral Water - Product Photo">
+        <h2 class="product-name" data-type="mineralwater">Blueberry Mineral Water</h2>
+    </li>
+    <li class="product-item" data-prod_id="V-C6614">
+        <img class="product-image" src="images/products/vitamin-c.jpg" alt="Vitamin C - Product Photo">
+        <h2 class="product-name" data-type="vitamin">Vitamin C</h2>
+    </li>
+    <li class="product-item" data-prod_id="PB-8154">
+        <img class="product-image" src="images/products/proteinbar-chocolate.jpg" alt="Protein Bar Chocolate - Product Photo">
+        <h2 class="product-name" data-type="proteinbar">Chocolate Protein Bar</h2>
+    </li>
+    <li class="product-item" data-prod_id="V-CA4543">
+        <img class="product-image" src="images/products/vitamin-calcium.jpg" alt="Vitamin Calcium - Product Photo">
+        <h2 class="product-name" data-type="vitamin">Calcium Vitamin</h2>
+    </li>
+  </ul><!-- product-list -->
+</section><!-- #products -->
+<footer class="footer">
+  <div class="container">
+  <nav class="nav" role="navigation">
+    <div class="container nav-elements">
+      <div class="branding">
+          <a href="index.html"><img src="images/hpluslogo.svg" alt="Logo - H Plus Sports"></a>
+        <p class="address">K00271287 
+      </p><p id="date">
+      </p>
+      </div><!-- branding -->
+
+    </div>
+  </nav>
+  <p class="legal">H+ Sport is a fictitious brand created by lynda.com solely for the purpose of training. All products and people associated with H+ Sport are also fictitious. Any resemblance to real brands, products, or people is purely coincidental. Information provided about the product is also fictitious and should not be construed to be representative of actual products on the market in a similar product category.</p>
+    </div>
+      </footer><!-- footer -->
+
+</body>
+</html>
